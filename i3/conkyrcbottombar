@@ -1,0 +1,24 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+# Update interval in seconds
+update_interval 1.0
+total_run_times 0
+override_utf8_locale yes
+
+TEXT
+
+[{ "full_text" : "KERNEL" , "color" : "\#2ECC71" } ,
+ { "full_text" : "$sysname $kernel" , "color" : "\#D9E6F2" } ,
+ { "full_text" : "HD" , "color" : "\#2ECC71" } ,
+ { "full_text" : "root: ${fs_free /}/${fs_size /} data: ${fs_free /mnt/data}/${fs_size /mnt/data}" , "color" : "\#D9E6F2" } ,
+ { "full_text" : "CPU" , "color" : "\#2ECC71" } ,
+ { "full_text" : "Cpu1 ${cpubar cpu1}:${cpu cpu1}% Cpu2 ${cpubar cpu2}:${cpu cpu2}% Cpu3 ${cpubar cpu3}:${cpu cpu3}% Cpu4 ${cpubar cpu4}:${cpu cpu4}% " , "color" : "\#D9E6F2" },
+ { "full_text" : "TEMP" , "color" : "\#2ECC71" } ,
+ { "full_text" : "${acpitemp}c" , "color" : "\#D9E6F2" },
+ { "full_text" : "RAM" , "color" : "\#2ECC71" } ,
+ { "full_text" : "$membar ${mem} ($memperc%)" , "color" : "\#D9E6F2" },
+ { "full_text" : "SWAP" , "color" : "\#2ECC71" } ,
+ { "full_text" : "${swap}" , "color" : "\#D9E6F2" }] ,  

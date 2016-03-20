@@ -1,0 +1,196 @@
+# set keys
+set $mod Mod1
+set $win Mod4
+set $ctrl Control
+
+# set color
+set $color0 #000000
+set $color1 #2ECC71
+set $color2 #ffffff
+set $color3 #DC3430
+set $color4 #D9E6F2
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $color1 $color1 #ffffff $color3   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+# disable titlebar
+new_window 1pixel
+new_float 1pixel
+
+# Font
+font pango:terminus 8
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+e restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# bindsym keys
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+p exec dmenu_run -fn "terminus-10" -nb "#000000" -nf "#2ECC71" -sb "#353839" -sf "#D9E6F2"
+bindsym $mod+a exec thunar
+bindsym $mod+g exec gcolor2
+bindsym $mod+w exec firefox-bin
+bindsym $mod+v exec VirtualBox
+bindsym $mod+t exec urxvt -e sudo tail -f /var/log/emerge-fetch.log
+bindsym $mod+y exec urxvt -e sudo tail -f /var/log/emerge.log
+bindsym $win+Left exec light -U 5
+bindsym $win+Right exec light -A 5
+bindsym $win+Up exec amixer -q set Master 5%+
+bindsym $win+Down exec amixer -q set Master 5%-
+
+# Assign workspace
+assign [class="Firefox"] $ws2
+assign [class="Thunar"] $ws3
+assign [class="VirtualBox"] $ws8
+assign [class="^smplayer$"] $ws5
+
+# Assign always floating
+for_window [class="^URxvt$"] floating enable
+for_window [class="^Deluge$"] floating enable
+for_window [class="^System-config-printer.py$"] floating enable
+for_window [class="^Viewnior$"] floating enable
+for_window [class="^Uget-gtk$"] floating enable
+for_window [class="^Blueman-manager$"] floating enable
+for_window [class="^Xarchiver$"] floating enable
+
+# autostart
+exec --no-startup-id ~/.i3/autostart
+
+# set always floating
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# change focus
+bindsym Shift+Left focus left
+bindsym Shift+Down focus down
+bindsym Shift+Up focus up
+bindsym Shift+Right focus right
+
+# move focused window
+bindsym $ctrl+Left move left
+bindsym $ctrl+Down move down
+bindsym $ctrl+Up move up
+bindsym $ctrl+Right move right
+
+# move to container
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
+
+# move window to next/prev workspace
+bindsym $mod+Shift+Right move window to workspace next
+bindsym $mod+Shift+Left move window to workspace prev
+
+# split in horizontal orientation
+bindsym $win+h split h
+
+# split in vertical orientation
+bindsym $win+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $ctrl+a focus parent
+
+# focus the child container
+bindsym $ctrl+d focus child
+
+# Set Workspace
+set $ws1 1:term
+set $ws2 2:www
+set $ws3 3:fm
+set $ws4 4:editor
+set $ws5 5:media
+set $ws6 6:work
+set $ws7 7:steam
+set $ws8 8:dev
+set $ws9 9:misc
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# bar
+bar {
+	status_command ~/.i3/conkytopbar
+	position top
+	tray_output LVDS1
+	colors {
+        background $color0
+        statusline #ffffff
+        separator #666666
+
+		#<colorclass>      <border> <bg>   <text>
+        focused_workspace  $color0 $color0 $color1
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace $color0 $color0 $color4
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+bar {
+	workspace_buttons no
+	status_command ~/.i3/conkybottombar
+	tray_output none
+}

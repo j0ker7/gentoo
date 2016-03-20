@@ -1,0 +1,24 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+# Update interval in seconds
+update_interval 1.0
+total_run_times 0
+override_utf8_locale yes
+color0 #ff0000
+
+TEXT
+
+[{ "full_text" : "MPD" , "color" : "\#2ECC71" } ,
+ { "full_text" : "${if_mpd_playing}${mpd_smart 50} ${mpd_elapsed}/${mpd_length}${else}${mpd_status}${endif}" , "color" : "\#D9E6F2" } , 
+ { "full_text" : "UPTIME" , "color" : "\#2ECC71" } ,
+ { "full_text" : "$uptime" , "color" : "\#D9E6F2" } ,
+ { "full_text" : "WIFI" , "color" : "\#2ECC71" } ,
+ { "full_text" : "${wireless_essid wlo1} (${wireless_link_qual_perc wlo1})" , "color" : "\#D9E6F2" } ,
+ { "full_text" : "NETSPEED" , "color" : "\#2ECC71" } ,
+ { "full_text" : "down:${downspeed wlo1}/${downspeed eno1}" , "color" : "\#D9E6F2" } ,  
+ { "full_text" : "up:${upspeed wlo1}/${upspeed eno1}" , "color" : "\#D9E6F2" }, 
+ { "full_text" : "$nodename" , "color" : "\#2ECC71" } , 
+ { "full_text" : "${time %b %d %Y %I:%M%P}" , "color" : "\#D9E6F2" }]  ,

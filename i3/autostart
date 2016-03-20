@@ -1,0 +1,16 @@
+#!/bin/bash
+
+nitrogen --restore &
+volumeicon &
+nm-applet &
+blueman-applet &
+uget-gtk &
+deluge &
+numlockx &
+parcellite &
+urxvt &
+mpd &
+
+sudo mount /dev/sda2 /boot
+
+conky -c ~/.i3/conkydesktop &

@@ -1,2 +1,2 @@
 # gentoo
-all config on my gentoo
+All config on my Gentoo

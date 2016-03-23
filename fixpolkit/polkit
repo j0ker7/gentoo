@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat polkitfix >> /etc/polkit-1/rules.d/50-default.rules
